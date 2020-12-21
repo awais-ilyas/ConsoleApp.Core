@@ -29,12 +29,13 @@ namespace ConsoleApp.Core
                 .ConfigureServices((context, services) =>
                 {
                     services.AddTransient<IGreetingService, GreetingService>();
+                    services.AddTransient<IDapper, Dapper>();
                 })
                 .UseSerilog()
                 .Build();
 
             var svc = ActivatorUtilities.CreateInstance<GreetingService>(host.Services);
-            svc.Run();
+            _ = svc.RunAsync();
         }
 
         static void BuildConfig(IConfigurationBuilder builder)

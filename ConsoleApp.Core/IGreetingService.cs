@@ -1,7 +1,9 @@
-﻿namespace ConsoleApp.Core
+﻿using System.Threading.Tasks;
+
+namespace ConsoleApp.Core
 {
     public interface IGreetingService
     {
-        void Run();
+        Task<bool> RunAsync();
     }
 }
